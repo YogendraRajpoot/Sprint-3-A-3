@@ -24,6 +24,7 @@ text-decoration:none;
 color:red;
 font-size:larger;
 font-weight:600;
+margin-top:-15px
 `
 
 export const Navbar = () => {
@@ -32,6 +33,7 @@ export const Navbar = () => {
       {/* <h1>Navbar</h1> */}
       <LinkA to="/">Home</LinkA> 
       <LinkA to="/login">Login</LinkA>
+      
     </Section>
   );
 };

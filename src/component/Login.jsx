@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/Authcontext";
 
 export const Login = () => {
@@ -11,6 +11,14 @@ export const Login = () => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
+  // this part is make for local storage check
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("Token") !== null) {
+  //     console.log(localStorage.getItem("Token"));
+  //     login(localStorage.getItem("Token"));
+  //   }
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +29,10 @@ export const Login = () => {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((res) => login(res.token))
+      .then((res) => {
+        // localStorage.setItem("Token", res.token); //this part store data in localstorage
+        login(res.token);
+      })
       .catch((err) => console.log(err));
   };
 
